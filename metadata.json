@@ -1,0 +1,7 @@
+{
+  "name": "Remix: trial 1",
+  "description": "A professional journaling and checklist tool for Forex traders.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
