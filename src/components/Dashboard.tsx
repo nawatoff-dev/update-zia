@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'motion/react';
 import { CheckSquare, BookOpen, BarChart3, Calendar, LayoutDashboard, ArrowRight, ShieldCheck, Zap, Settings as SettingsIcon, ChevronDown, Download } from 'lucide-react';
-import { cn } from '../types';
+import { cn } from '../lib/utils';
 
 interface DashboardProps {
   setActiveTab: (tab: 'dashboard' | 'checklist' | 'calendar' | 'journal' | 'settings' | 'analysis') => void;
@@ -17,8 +17,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ setActiveTab }) => {
       icon: CheckSquare,
       color: 'text-emerald-400',
       bg: 'bg-emerald-500/10',
-      border: 'border-emerald-500/20',
-      isLive: true
+      border: 'border-emerald-500/20'
     },
     {
       id: 'journal',
@@ -27,8 +26,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ setActiveTab }) => {
       icon: BookOpen,
       color: 'text-blue-400',
       bg: 'bg-blue-500/10',
-      border: 'border-blue-500/20',
-      isLive: true
+      border: 'border-blue-500/20'
     },
     {
       id: 'analysis',
@@ -37,8 +35,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ setActiveTab }) => {
       icon: BarChart3,
       color: 'text-purple-400',
       bg: 'bg-purple-500/10',
-      border: 'border-purple-500/20',
-      isLive: true
+      border: 'border-purple-500/20'
     },
     {
       id: 'calendar',
@@ -47,8 +44,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ setActiveTab }) => {
       icon: Calendar,
       color: 'text-amber-400',
       bg: 'bg-amber-500/10',
-      border: 'border-amber-500/20',
-      isLive: true
+      border: 'border-amber-500/20'
     }
   ];
 
@@ -63,8 +59,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ setActiveTab }) => {
             </div>
             <div>
               <h1 className="text-4xl font-black tracking-tight uppercase leading-none mb-2 text-text-main">Trading <span className="text-neon-blue">Dashboard</span></h1>
-              <p className="text-text-muted font-medium flex items-center gap-2">
-                <Zap size={14} className="text-neon-gold" />
+              <p className="text-text-muted font-medium">
                 Welcome back. Follow your process and stay disciplined.
               </p>
             </div>
@@ -79,10 +74,6 @@ export const Dashboard: React.FC<DashboardProps> = ({ setActiveTab }) => {
               Guide
               <ChevronDown size={14} className="animate-bounce" />
             </button>
-            <div className="flex items-center gap-3 px-6 py-3 neon-indicator-gold rounded-2xl">
-              <div className="w-2 h-2 bg-neon-gold rounded-full animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-widest text-neon-gold">System Live</span>
-            </div>
           </div>
         </div>
       </div>
@@ -98,29 +89,23 @@ export const Dashboard: React.FC<DashboardProps> = ({ setActiveTab }) => {
             onClick={() => setActiveTab(item.id as any)}
             className={cn(
               "group relative p-8 rounded-[2.5rem] transition-all duration-500 hover:scale-[1.05] hover:shadow-2xl",
-              "bg-brand-surface/40 hover:bg-brand-surface",
-              "neon-border-green"
+              "bg-brand-surface/40 hover:bg-brand-surface border border-brand-border",
+              `hover:${item.border}`
             )}
           >
             <div className="flex items-start justify-between mb-8">
-              <div className={cn("p-6 rounded-[2rem] transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 relative neon-icon-blue")}>
-                {item.isLive && (
-                  <div className="absolute -top-1 -right-1 flex h-4 w-4">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-gold opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-4 w-4 bg-neon-gold"></span>
-                  </div>
-                )}
-                <item.icon className="text-white" size={48} />
+              <div className={cn("p-6 rounded-[2rem] transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 relative", item.bg)}>
+                <item.icon className={item.color} size={48} />
               </div>
               <div className="p-3 rounded-2xl bg-white/5 opacity-0 group-hover:opacity-100 transition-all transform translate-x-4 group-hover:translate-x-0">
                 <ArrowRight size={24} className="text-text-muted" />
               </div>
             </div>
             
-            <h3 className="text-2xl font-black uppercase tracking-tight mb-2 text-text-main group-hover:text-neon-blue transition-colors">{item.title}</h3>
+            <h3 className="text-2xl font-black uppercase tracking-tight mb-2 text-text-main transition-colors">{item.title}</h3>
             <p className="text-text-muted text-sm font-medium leading-relaxed mb-6">{item.description}</p>
             
-            <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-neon-blue opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+            <div className={cn("flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0", item.color)}>
               Launch <ArrowRight size={12} />
             </div>
           </motion.button>

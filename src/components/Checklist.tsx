@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Check, ShieldCheck, AlertCircle, Plus, Trash2, Zap, Target, ShieldAlert, ShieldQuestion, Pencil, X, Save } from 'lucide-react';
-import { ChecklistSection, cn } from '../types';
+import { ChecklistSection } from '../types';
+import { cn } from '../lib/utils';
 
 interface ChecklistProps {
   sections: ChecklistSection[];

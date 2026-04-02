@@ -4,7 +4,7 @@ import { Mic, MicOff, Image as ImageIcon, Trash2, FileDown, Plus, X, RotateCcw }
 import { toCanvas } from 'html-to-image';
 import { jsPDF } from 'jspdf';
 import { savePdf } from '../services/fileService';
-import { cn } from '../types';
+import { cn } from '../lib/utils';
 
 interface JournalEntryProps {
   setupStatus: {

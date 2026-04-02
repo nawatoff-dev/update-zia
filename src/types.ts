@@ -65,14 +65,24 @@ export interface CalendarPlan {
   tasks: PlanTask[];
 }
 
+export interface AccountHistoryEntry {
+  date: string; // ISO string
+  balance: number;
+  profit: number;
+}
+
 export interface Account {
   id: string;
   type: 'live' | 'funded';
   name: string;
+  initialBalance: number;
   balance: number;
   currency: string;
   // Funded specific
-  phase?: 1 | 2 | 3 | 4;
+  phase?: number;
+  profitLimit?: number;
+  lossLimit?: number; // Percentage, e.g., 5 for 5%
   status?: 'passed' | 'failed' | 'in-progress';
   strategy?: string;
+  history: AccountHistoryEntry[];
 }

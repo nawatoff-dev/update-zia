@@ -12,6 +12,66 @@
   --color-text-main: var(--text-main, #ffffff);
   --color-text-muted: var(--text-muted, #71717a);
   --color-text-inverse: var(--text-inverse, #000000);
+
+  /* Neon Colors */
+  --color-neon-blue: #0ea5e9;
+  --color-neon-purple: #a855f7;
+  --color-neon-green: #10b981;
+  --color-neon-gold: #f59e0b;
+  --color-neon-red: #ef4444;
+}
+
+@layer utilities {
+  .neon-active-blue {
+    @apply bg-neon-blue/10 border border-neon-blue/30 shadow-[0_0_20px_rgba(14,165,233,0.15)];
+  }
+
+  .neon-border-blue {
+    @apply border border-neon-blue/20 hover:border-neon-blue/50 transition-all duration-500;
+  }
+  
+  .neon-border-green {
+    @apply border border-neon-green/20 hover:border-neon-green/50 transition-all duration-500;
+  }
+
+  .neon-border-purple {
+    @apply border border-neon-purple/20 hover:border-neon-purple/50 transition-all duration-500;
+  }
+
+  .neon-border-gold {
+    @apply border border-neon-gold/20 hover:border-neon-gold/50 transition-all duration-500;
+  }
+  
+  .neon-icon-blue {
+    @apply bg-neon-blue/20 border border-neon-blue/30 shadow-[0_0_15px_rgba(14,165,233,0.3)];
+  }
+
+  .neon-icon-green {
+    @apply bg-neon-green/20 border border-neon-green/30 shadow-[0_0_15px_rgba(16,185,129,0.3)];
+  }
+
+  .neon-icon-purple {
+    @apply bg-neon-purple/20 border border-neon-purple/30 shadow-[0_0_15px_rgba(168,85,247,0.3)];
+  }
+
+  .neon-icon-gold {
+    @apply bg-neon-gold/20 border border-neon-gold/30 shadow-[0_0_15px_rgba(245,158,11,0.3)];
+  }
+  
+  .neon-panel-purple {
+    @apply bg-brand-surface/60 border border-neon-purple/20 backdrop-blur-xl;
+  }
+  
+  .neon-indicator-gold {
+    @apply bg-neon-gold/10 border border-neon-gold/20;
+  }
+
+  .cyber-grid {
+    background-image: 
+      linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
 }
 
 @layer base {

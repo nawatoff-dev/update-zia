@@ -233,7 +233,24 @@ export default function App() {
   // State for Accounts
   const [accounts, setAccounts] = useState<Account[]>(() => {
     const saved = localStorage.getItem('zzia_accounts');
-    return saved ? JSON.parse(saved) : [];
+    if (!saved) return [];
+    try {
+      const parsed = JSON.parse(saved) as any[];
+      return parsed.map(acc => ({
+        ...acc,
+        initialBalance: acc.initialBalance ?? acc.balance ?? 0,
+        balance: acc.balance ?? 0,
+        pips: acc.pips ?? 0,
+        history: Array.isArray(acc.history) ? acc.history : [{
+          date: acc.createdAt || new Date().toISOString(),
+          balance: acc.balance ?? 0,
+          profit: 0,
+          pips: acc.pips ?? 0
+        }]
+      }));
+    } catch (e) {
+      return [];
+    }
   });
 
   // State for Active Alarms (ringing)
